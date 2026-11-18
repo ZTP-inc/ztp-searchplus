@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZTP Search+</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 99px;
+            padding: 14px 24px;
+            color: #f8fafc;
+            font-size: 1.1rem;
+            outline: none;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .search-input:focus {
+            border-color: #3b82f6;
+        }
+        .search-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px;
+        }
+        .btn {
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #334155;
+        }
+        .btn-gemini {
+            border-color: #8b5cf6;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">ZTP Search+</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Pesquise no Google ou IA..." autofocus>
+    </div>
+
+    <div class="search-buttons">
+        <button class="btn" onclick="buscar('google')">Pesquisa Google</button>
+        <button class="btn btn-gemini" onclick="buscar('gemini')">✨ Gemini AI</button>
+        <button class="btn" onclick="buscar('sorte')">Estou com Sorte</button>
+    </div>
+
+    <footer>ZTP Search+ &bull; Google & Gemini</footer>
+
+    <script>
+        const input = document.getElementById('searchInput');
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscar('google');
+            }
+        });
+
+        function buscar(tipo) {
+            const termo = input.value.trim();
+            
+            if (tipo === 'google') {
+                if (termo) window.location.href = `https://www.google.com/search?q=${encodeURIComponent(termo)}`;
+            } else if (tipo === 'gemini') {
+                window.location.href = termo ? `https://gemini.google.com/app?q=${encodeURIComponent(termo)}` : `https://gemini.google.com/`;
+            } else if (tipo === 'sorte') {
+                const termos = ["Inovações Tecnológicas", "Inteligência Artificial", "Exploração Espacial", "Futuros Smartphones"];
+                const sorteio = termos[Math
+                
